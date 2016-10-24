@@ -56,10 +56,17 @@ gsutil mb -c coldline gs://earth-engine-stagging
     -h, --help     output usage information
     -V, --version  output the version number
     -y, --yes      Do not prompt for approval before uploading
-    -r, --rm       Allow overwriting of existing EE files
+    -r, --rm       Allow overwriting of existing Earth Engine files
 ```
 
 ### Upload
+
+First, make sure the Earth Engine folder exists
+```bash
+earthengine create folder users/ucd-cws-ee-data/uploading-testing
+```
+
+Then upload asset(s)
 
 ```bash
 cws-ee-asset-uploader users/ucd-cws-ee-data/uploading-testing et24_03212015_P44R33_L8_BD.tif
