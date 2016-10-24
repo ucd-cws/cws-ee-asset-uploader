@@ -39,7 +39,7 @@ you want to switch accounts.
 Finally, create a staging bucket (ucd.cws.ee.data already has this, do not recreate).
 
 ```bash
-gsutil mb -c coldline gs://earth-engine-stagging
+gsutil mb -c coldline gs://earth-engine-staging
 ```
 
 ## Usage
