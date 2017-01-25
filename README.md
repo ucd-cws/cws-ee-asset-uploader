@@ -36,10 +36,10 @@ gcloud init
 You only need to authenticate once, not every time you use the cws-ee-asset-uploader.  Unless
 you want to switch accounts.
 
-Finally, create a staging bucket (ucd.cws.ee.data already has this, do not recreate).
+Finally, create a stagging bucket:
 
 ```bash
-gsutil mb -c coldline gs://earth-engine-staging
+gsutil mb -c coldline gs://cws-my-test-bucket
 ```
 
 ## Usage
@@ -69,9 +69,9 @@ earthengine create folder users/ucd-cws-ee-data/uploading-testing
 Then upload asset(s)
 
 ```bash
-cws-ee-asset-uploader users/ucd-cws-ee-data/uploading-testing et24_03212015_P44R33_L8_BD.tif
+cws-ee-asset-uploader gs://cws-my-test-bucket users/ucd-cws-ee-data/uploading-testing et24_03212015_P44R33_L8_BD.tif
 ```
 or
 ```bash
-cws-ee-asset-uploader users/ucd-cws-ee-data/uploading-testing *.tif
+cws-ee-asset-uploader gs://cws-my-test-bucket users/ucd-cws-ee-data/uploading-testing *.tif
 ```

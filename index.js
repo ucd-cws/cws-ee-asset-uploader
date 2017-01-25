@@ -7,14 +7,17 @@ var config = require('./lib/config');
 
 program
   .version(require('./package.json').version)
-  .usage('cws-ee-asset-uploader [Earth Engine Path] <File...>')
+  .usage('cws-ee-asset-uploader [GS Stagging Bucket] [Earth Engine Path] <File...>')
   .option('-y, --yes', 'Do not prompt for approval before uploading')
   .option('-r, --rm', 'Allow overwriting of existing EE files')
   .parse(process.argv);
 
-if( program.args.length < 2 ) {
-  throw new Error('You must provide a Earth Engine location and files to upload');
+if( program.args.length < 3 ) {
+  throw new Error('You must provide a GS Bucket, Earth Engine location and files to upload');
 }
+
+var gsBucket = program.args.splice(0, 1)[0];
+config.GS_ROOT = gsBucket;
 
 var eeLocation = program.args.splice(0, 1)[0];
 var files = program.args;
@@ -41,6 +44,8 @@ function onExpandComplete() {
   arr.forEach((f) => {
     console.log(`  ${f}`);
   });
+  console.log('*** Stagging Location ***');
+  console.log(`  ${gsBucket}`);
   console.log('*** To ***');
   console.log(`  ${eeLocation}\n`);
   console.log('');
